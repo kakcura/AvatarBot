@@ -98,9 +98,13 @@ function differenceMap(){
 					x: x,
 					y: y
 				};
+
+				var x_pos = (width - x);
+				var y_pos = y;
 			
-				document.getElementById("pointer").style.top = y + "px";
-				document.getElementById("pointer").style.left = (width - x)+"px";
+				document.getElementById("pointer").style.top = y_pos + "px";
+				document.getElementById("pointer").style.left = (width - x_pos)+"px";
+				document.elementFromPoint(x_pos, y_pos).click();
 			//}
 		}
 	}
@@ -154,13 +158,29 @@ function handledown(){
 			break;
 		case 1://Got next move, do something based on direction
 			var dx=down.x-wasdown.x,dy=down.y-wasdown.y
+			var dirx=Math.abs(dy)<Math.abs(dx)//(dx,dy) is on a bowtie
 			//console.log(good,davg)
-			if(dx<-movemaxAssessableColorChange){
+			if(dx<-movemaxAssessableColorChange&&dirx){
 				console.log('right');
 			}
-			else if(dx>movemaxAssessableColorChange){
+			else if(dx>movemaxAssessableColorChange&&dirx){
 				console.log('left');
 			}
+			if(dy>movemaxAssessableColorChange&&!dirx){
+				if(davg>overmaxAssessableColorChange){
+					console.log('over up')
+				}
+				else{
+					console.log('up')
+				}
+			}
+			else if(dy<-movemaxAssessableColorChange&&!dirx){
+				if(davg>overmaxAssessableColorChange){
+					console.log('over down')
+				}
+				else{
+					console.log('down')
+				}
 }
 			state=2
 			break
