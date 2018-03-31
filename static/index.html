@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="AvatarBot">
+        <meta name="author" content="Korhan Akcura" >
+        <title>AvatarBot</title>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/master.css" rel="stylesheet">
+
+</head>
+<body>
+
+        <nav class="navbar navbar-inverse">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                        <a href="index.html" class="navbar-brand">AvatarBot</a>
+                </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+                <table style="width:100%;">
+                        <tbody >
+                                <tr>
+                                        <td align="left" style="width:640px;">
+                                             <img id="video_stream" style="width:640px;" src=""> 
+                                        </td>
+                                        <td align="center">
+                                             <canvas id="canvas" style="position:relative; z-index:-2;"></canvas>
+                                             <video id="video" autoplay height="100%" style="display:none; position:relative; z-index:-3; object-fit: fill; height:100%"></video>                                                
+                                        </td>
+                                        <td align="right" style="width:640px;">
+                                             <div id="disp" style="width:640px;"><canvas id="comp" style="width:640px; position:relative; z-index:-1; background-color: black;"></canvas></div>
+                                        </td>
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+
+        <div id="pointer" class="pointer"></div>
+
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <div class="container">
+                        <p class="navbar-text pull-left">© 2018 - AvatarBot</p>
+                </div>
+        </div>
+
+        <!-- Load JS at the end -->
+        <script type="text/javascript" src="js/libs/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+                var video = document.getElementById('video');
+                document.getElementById('video_stream').style.width = "640px";
+                //document.getElementById('disp').width = video.videWidth;
+                //document.getElementById('comp').width = video.videWidth;
+
+                /*var src = 'http://172.20.80.152:5000/api/stream';
+                var img = document.getElementById('video_stream');
+                setInterval(function(){
+                        img.src = src + "?" + new Date().getTime();
+                }, 1000);*/
+        </script>
+        <script type="text/javascript" src="js/hand_gesture.js"></script>
+</body>
+</html>
+~          
