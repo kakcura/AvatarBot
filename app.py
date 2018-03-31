@@ -1,5 +1,5 @@
-# Avatar Control : A Web Service to control robot with http requests.
-# Author :  Korhan Akcura
+# Door Bell Service : A Web Service to run from a smart door bell with a camera.
+# Author :  Korhan Akcura, Ace Koumtakoun
 
 import json
 import requests
@@ -13,6 +13,8 @@ import atexit
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask, jsonify, Response
+
+from camera2 import Camera
 
 from time import sleep
 
@@ -201,7 +203,7 @@ def turn_right():
 	sleep(1.0)
 
 	stop_motors()
-
+	
 	return jsonify({"result" : "RIGHT SUCCESS"})
 
 
@@ -213,7 +215,9 @@ def move_forward():
 	motor2L()
 	motor4L()
 
-	sleep(0.5)
+	sleep(2.0)
+
+	stop_motors()
 
 	return jsonify({"result" : "FORWARD SUCCESS"})
 
@@ -226,7 +230,9 @@ def move_backward():
 	motor2R()
 	motor4R()
 
-	sleep(0.5)
+	sleep(2.0)
+	
+	stop_motors()
 
 	return jsonify({"result" : "BACKWARD SUCCESS"})
 
