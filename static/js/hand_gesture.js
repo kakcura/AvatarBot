@@ -103,7 +103,7 @@ function differenceMap(){
 				var y_pos = y;
 			
 				document.getElementById("pointer").style.top = y_pos + "px";
-				document.getElementById("pointer").style.left = (width - x_pos)+"px";
+				document.getElementById("pointer").style.left = x_pos + "px";
 				document.elementFromPoint(x_pos, y_pos).click();
 			//}
 		}
