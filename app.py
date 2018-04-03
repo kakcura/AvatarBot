@@ -1,4 +1,4 @@
-# Door Bell Service : A Web Service to run from a smart door bell with a camera.
+# Avatar Control : A Web Service to control robot with http requests.
 # Author :  Korhan Akcura, Ace Koumtakoun
 
 import json
@@ -13,8 +13,6 @@ import atexit
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask, jsonify, Response
-
-from camera2 import Camera
 
 from time import sleep
 
@@ -154,17 +152,6 @@ def stop_motors():
 def root(): 
 	return app.send_static_file('index.html')
 
-def gen(camera):
-	while True:
-		frame = camera.get_frame()
-		yield (b'--frame\r\n'
-		       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')		     
-
-@app.route("/video_feed")
-def video_feed():
-	return Response(gen(Camera()),
-			mimetype='multipart/x-mixed-replace; boundary=frame')
-  
 @app.route("/api/stream", methods=['GET', 'POST'])
 def take_and_send_picture():
 	# initialize the camera
